@@ -5,6 +5,7 @@ test_env
 build
 dist
 fixed_wheels
+wheelhouse
 *.egg-info
 # compiled objects
 *.so
