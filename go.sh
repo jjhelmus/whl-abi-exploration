@@ -13,3 +13,13 @@ cd spam
 cd ..
 conda run --prefix ./env python -m pip install ./spam
 conda run --prefix ./env DYLD_LIBRARY_PATH=./spam python demo.py
+
+cd eggs
+    cc -c -fPIC foo.c
+    cc -shared -o libfoo.so foo.o
+    rm foo.o
+
+    rm -rf build
+cd ..
+conda run --prefix ./env python -m pip install ./eggs
+conda run --prefix ./env DYLD_LIBRARY_PATH=./eggs python demo2.py
