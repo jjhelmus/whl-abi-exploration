@@ -2,13 +2,13 @@
 #include <Python.h>
 
 int
-multiplier(int a, int b)
+doit(int a, int b)
 {
     return a * b;
 }
 
 static PyObject *
-c_multiplier(PyObject *self, PyObject *args)
+spam_doit(PyObject *self, PyObject *args)
 {
     int a;
     int b;
@@ -17,27 +17,26 @@ c_multiplier(PyObject *self, PyObject *args)
     {
         return NULL;
     }
-    ret = multiplier(a, b);
+    ret = doit(a, b);
     return Py_BuildValue("i", ret);
 }
 
-static PyMethodDef
-module_methods[] = {
-        {"multiplier", c_multiplier, METH_VARARGS, "Multiply two numbers."},
+static PyMethodDef SpamMethods[] = {
+        {"doit", spam_doit, METH_VARARGS, "Do the thing."},
         {NULL, NULL, 0, NULL}
 };
 
-static struct PyModuleDef c_extension =
+static struct PyModuleDef spammodule =
     {
         PyModuleDef_HEAD_INIT,
-        "c_extension", // the name of the module in Python
-        "",            // The docstring in Python
-        -1,            /* size of per-interpreter state of the module, or -1 if the module keeps state in global variables. */
-        module_methods
+        "spam",
+        "An example module that links against libfoo",
+        -1,
+        SpamMethods
     };
 
 PyMODINIT_FUNC
-PyInit_c_extension(void)
+PyInit_spam(void)
 {
-    return PyModule_Create(&c_extension);
+    return PyModule_Create(&spammodule);
 }

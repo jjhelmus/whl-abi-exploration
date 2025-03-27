@@ -1,10 +1,11 @@
-from distutils.core import setup, Extension
-
-module = Extension("c_extension", sources=["c_extension.c"])
+from setuptools import setup, Extension
 
 setup(
-    name="c_extension",
+    name="spam",
     version="0.1",
-    description="An example of C extension made callable to the Python API.",
-    ext_modules=[module],
+    description="An example extension that links against libfoo.",
+    ext_modules = [Extension(
+        "spam",
+        sources=["c_extension.c"]
+    )],
 )
