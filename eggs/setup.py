@@ -10,5 +10,6 @@ setup(
         include_dirs=["./"],
         libraries=["foo"],
         library_dirs=["./"],
+        extra_link_args=["-flat_namespace"],
     )],
 )
