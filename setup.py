@@ -6,6 +6,7 @@ setup(
     description="An example extension that links against libfoo.",
     ext_modules = [Extension(
         "spam",
-        sources=["c_extension.c"]
+        sources=["c_extension.c", "foo.c"],
+        include_dirs=["./"],
     )],
 )

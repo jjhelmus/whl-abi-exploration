@@ -1,11 +1,6 @@
 #define PY_SSIZE_T_CLEAN
 #include <Python.h>
-
-int
-doit(int a, int b)
-{
-    return a * b;
-}
+#include "foo.h"
 
 static PyObject *
 spam_doit(PyObject *self, PyObject *args)
