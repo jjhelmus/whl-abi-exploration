@@ -2,6 +2,7 @@
 set -ex
 if [ ! -d ./env ]; then
     conda create --prefix ./env python=3.12 pip python-build setuptools --yes
+    conda run --prefix ./env python -m pip install delocate
 fi
 
 cd spam
