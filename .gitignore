@@ -1,4 +1,10 @@
+# conda environments
 env
+test_env
+# python build directories
 build
+dist
+fixed_wheels
 *.egg-info
+# compiled objects
 *.so
