@@ -3,6 +3,14 @@
 #include "foo.h"
 
 static PyObject *
+spam_get_libfoo_version(PyObject *self, PyObject *args)
+{
+    int ret;
+    ret = get_version();
+    return Py_BuildValue("i", ret);
+}
+
+static PyObject *
 spam_doit(PyObject *self, PyObject *args)
 {
     int a;
@@ -18,6 +26,7 @@ spam_doit(PyObject *self, PyObject *args)
 
 static PyMethodDef SpamMethods[] = {
         {"doit", spam_doit, METH_VARARGS, "Do the thing."},
+        {"get_libfoo_version", spam_get_libfoo_version, METH_VARARGS, "Return str of libfoo version."},
         {NULL, NULL, 0, NULL}
 };
 
